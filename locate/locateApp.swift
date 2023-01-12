@@ -13,7 +13,9 @@ struct locateApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            SplashScreen()
+            //MyLocations()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

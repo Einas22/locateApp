@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import UIKit
 
 struct PersistenceController {
     static let shared = PersistenceController()
@@ -13,9 +14,15 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
+        for i in 0..<10 {
+            
             let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            newItem.name = "location \((i))"
+            newItem.link = "location link"
+            newItem.photo = UIImage( systemName:"mappin.and.ellipse" )
+            newItem.linkDescription = "Place Description"
+            newItem.time = Date()
+            
         }
         do {
             try viewContext.save()

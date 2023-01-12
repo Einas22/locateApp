@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  locate
+
+  Created by Einas Alturki on 19/06/1444 AH.
+  
+*/
+"Edit" = "تعديل";
+"Done" = "تم";
+"My Locations" = "مواقعي";
+"Share your Location" = "مشاركة موقعك";
+"Enter number to send location by WhatsApp:" = "ادخل رقم جوال المراد مشاركه الموقع معه عبر الواتس اب";
+"Send" = "ارسال";
+"Phone Number" = "رقم الجوال";
+"Location Photo" = "صوره للموقع";
+"Select a Photo" = "اختر صوره";
+"Location Name:" = "اسم الموقع:";
+"Location Link:" = "رابط الموقع:";
+"Description:" = "وصف للموقع:";
+"Location Name" = "اسم الموقع";
+"Location Link" = "رابط الموقع";
+"Description" = "وصف للموقع";
+"Neighborhood name - City - House number" = " اسم الحي - المدينه - رقم البيت";
+"Cancel" = "إلغاء";
+"Add" = "اضافة";
+"Add New Location" = "اضافة موقع جديد";
+"Add a new Location Button" = "زر لاضافه موقع جديد";
+"Edit Button to Edit the location you have" = "زر تعديل مواقعك المضافة";
+"Done button" = "انتهاء من التعديل";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";

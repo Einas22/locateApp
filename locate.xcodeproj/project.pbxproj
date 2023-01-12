@@ -7,22 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50AA46EE296F3A3D00B7A8F6 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA46ED296F3A3D00B7A8F6 /* CountryCodes.swift */; };
+		50AA46F0296F5BD600B7A8F6 /* TestAddLocation2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA46EF296F5BD600B7A8F6 /* TestAddLocation2.swift */; };
+		50AA46F3296F74AC00B7A8F6 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA46F2296F74AC00B7A8F6 /* SplashScreen.swift */; };
+		50AA46F5296F7B9800B7A8F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50AA46F4296F7B9800B7A8F6 /* LaunchScreen.storyboard */; };
+		50AA46F7296FF84C00B7A8F6 /* MyLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA46F6296FF84C00B7A8F6 /* MyLocationsViewModel.swift */; };
+		50AA46FF296FFE5600B7A8F6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50AA4701296FFE5600B7A8F6 /* Localizable.strings */; };
+		50CF9C89296E8EA500371C6B /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF9C88296E8EA500371C6B /* Share.swift */; };
+		50CF9C8B296EA96B00371C6B /* testshare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF9C8A296EA96B00371C6B /* testshare.swift */; };
+		50CF9C8F296F123200371C6B /* TestAddLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF9C8E296F123200371C6B /* TestAddLocation.swift */; };
 		50F00AEC296A9D6600D71D20 /* locateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F00AEB296A9D6600D71D20 /* locateApp.swift */; };
-		50F00AEE296A9D6600D71D20 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F00AED296A9D6600D71D20 /* ContentView.swift */; };
 		50F00AF0296A9D6700D71D20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F00AEF296A9D6700D71D20 /* Assets.xcassets */; };
 		50F00AF3296A9D6700D71D20 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F00AF2296A9D6700D71D20 /* Preview Assets.xcassets */; };
 		50F00AF5296A9D6700D71D20 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F00AF4296A9D6700D71D20 /* Persistence.swift */; };
 		50F00AF8296A9D6700D71D20 /* locate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50F00AF6296A9D6700D71D20 /* locate.xcdatamodeld */; };
+		50F00B01296AA74600D71D20 /* MyLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F00B00296AA74600D71D20 /* MyLocations.swift */; };
+		50F00B03296AAEE700D71D20 /* AppModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F00B02296AAEE700D71D20 /* AppModifiers.swift */; };
+		50F00B07296C183800D71D20 /* AddLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F00B06296C183800D71D20 /* AddLocation.swift */; };
+		50F00B09296C46A700D71D20 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F00B08296C46A700D71D20 /* ImagePicker.swift */; };
+		50F00B0B296D512400D71D20 /* testHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F00B0A296D512400D71D20 /* testHome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50AA46ED296F3A3D00B7A8F6 /* CountryCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodes.swift; sourceTree = "<group>"; };
+		50AA46EF296F5BD600B7A8F6 /* TestAddLocation2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddLocation2.swift; sourceTree = "<group>"; };
+		50AA46F2296F74AC00B7A8F6 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		50AA46F4296F7B9800B7A8F6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		50AA46F6296FF84C00B7A8F6 /* MyLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationsViewModel.swift; sourceTree = "<group>"; };
+		50AA4700296FFE5600B7A8F6 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		50CF9C88296E8EA500371C6B /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
+		50CF9C8A296EA96B00371C6B /* testshare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testshare.swift; sourceTree = "<group>"; };
+		50CF9C8E296F123200371C6B /* TestAddLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddLocation.swift; sourceTree = "<group>"; };
 		50F00AE8296A9D6600D71D20 /* locate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = locate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F00AEB296A9D6600D71D20 /* locateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locateApp.swift; sourceTree = "<group>"; };
-		50F00AED296A9D6600D71D20 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		50F00AEF296A9D6700D71D20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50F00AF2296A9D6700D71D20 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		50F00AF4296A9D6700D71D20 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		50F00AF7296A9D6700D71D20 /* locate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = locate.xcdatamodel; sourceTree = "<group>"; };
+		50F00B00296AA74600D71D20 /* MyLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocations.swift; sourceTree = "<group>"; };
+		50F00B02296AAEE700D71D20 /* AppModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModifiers.swift; sourceTree = "<group>"; };
+		50F00B06296C183800D71D20 /* AddLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocation.swift; sourceTree = "<group>"; };
+		50F00B08296C46A700D71D20 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		50F00B0A296D512400D71D20 /* testHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testHome.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,9 +62,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50AA46F1296F67F000B7A8F6 /* TestView */ = {
+			isa = PBXGroup;
+			children = (
+				50AA46F6296FF84C00B7A8F6 /* MyLocationsViewModel.swift */,
+				50AA46EF296F5BD600B7A8F6 /* TestAddLocation2.swift */,
+				50CF9C8A296EA96B00371C6B /* testshare.swift */,
+				50F00B0A296D512400D71D20 /* testHome.swift */,
+				50CF9C8E296F123200371C6B /* TestAddLocation.swift */,
+			);
+			path = TestView;
+			sourceTree = "<group>";
+		};
 		50F00ADF296A9D6600D71D20 = {
 			isa = PBXGroup;
 			children = (
+				50AA4701296FFE5600B7A8F6 /* Localizable.strings */,
 				50F00AEA296A9D6600D71D20 /* locate */,
 				50F00AE9296A9D6600D71D20 /* Products */,
 			);
@@ -56,8 +95,16 @@
 			isa = PBXGroup;
 			children = (
 				50F00AEB296A9D6600D71D20 /* locateApp.swift */,
-				50F00AED296A9D6600D71D20 /* ContentView.swift */,
+				50F00B00296AA74600D71D20 /* MyLocations.swift */,
+				50CF9C88296E8EA500371C6B /* Share.swift */,
+				50F00B06296C183800D71D20 /* AddLocation.swift */,
+				50AA46ED296F3A3D00B7A8F6 /* CountryCodes.swift */,
+				50F00B08296C46A700D71D20 /* ImagePicker.swift */,
+				50AA46F1296F67F000B7A8F6 /* TestView */,
 				50F00AEF296A9D6700D71D20 /* Assets.xcassets */,
+				50AA46F4296F7B9800B7A8F6 /* LaunchScreen.storyboard */,
+				50AA46F2296F74AC00B7A8F6 /* SplashScreen.swift */,
+				50F00B02296AAEE700D71D20 /* AppModifiers.swift */,
 				50F00AF4296A9D6700D71D20 /* Persistence.swift */,
 				50F00AF6296A9D6700D71D20 /* locate.xcdatamodeld */,
 				50F00AF1296A9D6700D71D20 /* Preview Content */,
@@ -115,6 +162,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 50F00ADF296A9D6600D71D20;
 			productRefGroup = 50F00AE9296A9D6600D71D20 /* Products */;
@@ -131,6 +179,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50AA46F5296F7B9800B7A8F6 /* LaunchScreen.storyboard in Resources */,
+				50AA46FF296FFE5600B7A8F6 /* Localizable.strings in Resources */,
 				50F00AF3296A9D6700D71D20 /* Preview Assets.xcassets in Resources */,
 				50F00AF0296A9D6700D71D20 /* Assets.xcassets in Resources */,
 			);
@@ -143,14 +193,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F00B03296AAEE700D71D20 /* AppModifiers.swift in Sources */,
 				50F00AF5296A9D6700D71D20 /* Persistence.swift in Sources */,
-				50F00AEE296A9D6600D71D20 /* ContentView.swift in Sources */,
+				50AA46F7296FF84C00B7A8F6 /* MyLocationsViewModel.swift in Sources */,
+				50F00B0B296D512400D71D20 /* testHome.swift in Sources */,
+				50CF9C8B296EA96B00371C6B /* testshare.swift in Sources */,
+				50AA46F0296F5BD600B7A8F6 /* TestAddLocation2.swift in Sources */,
+				50AA46EE296F3A3D00B7A8F6 /* CountryCodes.swift in Sources */,
+				50F00B09296C46A700D71D20 /* ImagePicker.swift in Sources */,
+				50AA46F3296F74AC00B7A8F6 /* SplashScreen.swift in Sources */,
+				50CF9C8F296F123200371C6B /* TestAddLocation.swift in Sources */,
 				50F00AEC296A9D6600D71D20 /* locateApp.swift in Sources */,
+				50F00B01296AA74600D71D20 /* MyLocations.swift in Sources */,
+				50F00B07296C183800D71D20 /* AddLocation.swift in Sources */,
+				50CF9C89296E8EA500371C6B /* Share.swift in Sources */,
 				50F00AF8296A9D6700D71D20 /* locate.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		50AA4701296FFE5600B7A8F6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50AA4700296FFE5600B7A8F6 /* ar */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		50F00AF9296A9D6700D71D20 /* Debug */ = {
