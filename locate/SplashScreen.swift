@@ -20,12 +20,15 @@ struct SplashScreen: View {
             ZStack {
                 Color("WHITE")
                     .ignoresSafeArea()
+               
                 HStack{
                     Image("𝕝𝕠𝕔𝕒𝕥𝕖")
                         .padding(.leading,150)
                         .padding(.trailing,-55)
+                        .accessibilityLabel("Locate")
                     
-                    Image("Splash")
+                    Image("logo")
+                        
                         .resizable()
                         .scaledToFit()
                         .frame(width: 270)
@@ -36,8 +39,7 @@ struct SplashScreen: View {
                                 self.size = 1.00
                                 self.opacity = 1.00
                             }
-                        }
-                        .accessibilityHidden(true)
+                        }.accessibilityHidden(true)
                 }
                 .padding(.trailing,143)
                 

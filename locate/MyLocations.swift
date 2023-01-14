@@ -15,7 +15,7 @@ struct MyLocations: View {
     @State private var isShowingShare = false
     @State private var isEditing = false
     @State private var isPresented = false
-    @State private var numberOfLocations : Int = 0
+   // @State private var numberOfLocations : Int = 0
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.time, ascending: true)],
@@ -30,23 +30,27 @@ struct MyLocations: View {
         NavigationView {
             ZStack{
                 Image("bg")
+                    .ignoresSafeArea()
                     .accessibilityHidden(true)
                 
                 ScrollView {
                     
                     listView
-                        .padding(.top,20)
+                       // .accessibilityLabel("List of Locations you have")
+                        .padding(.top,30)
                         .padding(.leading)
                     
                     
                     
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
-                                Button(isEditing ? "Done" : "Edit") {
+                                Button(isEditing ? "Done" : "Edit")
+                                {
                                     withAnimation { isEditing.toggle() }
                                     
                                 }
-                                .accessibilityLabel ("\(isEditing ? "Done From Editing" : "Button to Edit the locations you have")")
+                                .fontWeight(.bold)
+                                .accessibilityLabel ("\(isEditing ? "Done From Editing" : "Edit the locations you have")")
                             }
                         }
                         .toolbar {
@@ -55,8 +59,9 @@ struct MyLocations: View {
                                     isShowingAddView.toggle()
                                 } label: {
                                     Image(systemName: "plus.circle")
+                                        .fontWeight(.bold)
                                 }
-                                .accessibilityLabel("Add a new Location Button")
+                                .accessibilityLabel("Add a new Location")
                             }
                         }
                     
@@ -66,7 +71,7 @@ struct MyLocations: View {
                     
                     
                 }//End scroll view
-                .padding(.top,20)
+                //.padding(.top,20)
                
                 
             } //End ZStack Background
@@ -74,12 +79,12 @@ struct MyLocations: View {
         }//End Navigation
         
         .sheet(isPresented: $isPresented, content: {
-            Share(name: selectedItem?.name ?? "", link: selectedItem?.link ?? "", photo: selectedItem?.photo ?? UIImage(named: "logo")!, linkDescription: selectedItem?.linkDescription ?? "")
+            Share(name: selectedItem?.name ?? "", link: selectedItem?.link ?? "", houseNumber: selectedItem?.houseNumber ?? "", photo: selectedItem?.photo ?? UIImage(named: "logo")!, linkDescription: selectedItem?.linkDescription ?? "")
         })
         .sheet(isPresented: $isShowingAddView, content: {
-            AddLocationView(onAdd: { LocationName, LocationLink, LocationDescription, image , time in
+            AddLocationView(onAdd: { LocationName, LocationLink, houseNumber, LocationDescription, image , time in
                 isShowingAddView = false
-                addContact(LocationName: LocationName, LocationLink: LocationLink, LocationDescription: LocationDescription, photo: image , time: time)
+                addContact(LocationName: LocationName, LocationLink: LocationLink, HouseNumber: houseNumber,  LocationDescription: LocationDescription, photo: image , time: time)
             }, onCancel: { isShowingAddView = false })
         })
        
@@ -88,7 +93,6 @@ struct MyLocations: View {
     private var listView: some View {
        
         ForEach(items) { contact in
-            
             
             ZStack{
                 RoundedRectangle(cornerRadius: 25)
@@ -102,28 +106,39 @@ struct MyLocations: View {
                 
                 VStack(alignment: .leading) {
                     
+                    let numberOfLocations = items.firstIndex(of: contact)! + 1
+                    
                     HStack{
                         Image(uiImage: contact.photo ?? UIImage(named: "logo")!)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 50, height: 50)
-                            .accessibilityLabel("photo of the Location")
+                            .accessibilityLabel("\(contact.name ?? "None") Photo")
+                            
+                            
+                            
                         
                         Image("line")
                             .resizable()
                             .frame( height: 80)
                             .scaledToFit()
                             .padding(.top)
-                            .accessibilityHidden(true)
+                            .accessibilityLabel("\(contact.name ?? "None") Photo")
                         
                         
                         VStack(alignment: .leading){
-                            Text(contact.name ?? "None")
+                            Text(contact.name ?? "Location \(numberOfLocations)")
                                 .modifier(HeaderTitleModifier())
+                            .accessibilityLabel("Location \(numberOfLocations)\(contact.name ?? "None")")
+                                
+                            
                                 .padding(.bottom,3)
                             Text(contact.link ?? "None")
                                 .modifier(SubTitleModifier())
-                                .accessibilityLabel("Location Link")
+                                .accessibilityLabel("\(contact.name ?? "None") location link")
+                            Text(contact.houseNumber ?? "")
+                                .modifier(SubTitleModifier())
+                                .accessibilityLabel("House Number \(contact.houseNumber ?? " None") ")
                             
                         }
                         //.padding()
@@ -133,8 +148,9 @@ struct MyLocations: View {
                             selectedItem = contact
                         } label: {
                             Image(systemName: "square.and.arrow.up")
-                                .accessibilityLabel("Share this Location")
-                        }
+                                
+                        }.accessibilityLabel("Share button")
+                        
                         if isEditing {
                             
                             Button {
@@ -158,29 +174,30 @@ struct MyLocations: View {
                         }
                     }//HStack
                     
-                    Text(contact.linkDescription ?? "None")
+                    
+                    Text(contact.linkDescription ?? "")
                         .modifier(SubTitleModifier())
+                        .accessibilityLabel(" \(contact.linkDescription ?? "None")")
                     
                         
                     
                 }
-                .accessibilityElement()
-                .accessibilityLabel ("Location List")
-                //print(items.count)
-                .accessibilityValue("Location \(numberOfLocations + 1)")
                 
                 
             }//End ZStack
+            .accessibilityElement(children: .combine)
+            
             
         } // End For Each
         //.accessibilityLabel("List of your locations")
         
     }
     
-    private func addContact(LocationName: String, LocationLink: String, LocationDescription: String, photo: UIImage? , time: Date) {
+    private func addContact(LocationName: String, LocationLink: String, HouseNumber: String, LocationDescription: String, photo: UIImage? , time: Date) {
         let newContact = Item(context: viewContext)
         newContact.name = LocationName
         newContact.link = LocationLink
+        newContact.houseNumber = HouseNumber
         newContact.linkDescription = LocationDescription
         newContact.photo = photo
         newContact.time = time

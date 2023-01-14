@@ -19,8 +19,9 @@ struct PersistenceController {
             let newItem = Item(context: viewContext)
             newItem.name = "location \((i))"
             newItem.link = "location link"
-            newItem.photo = UIImage( systemName:"mappin.and.ellipse" )
+            newItem.houseNumber = "House Number"
             newItem.linkDescription = "Place Description"
+            newItem.photo = UIImage( systemName:"mappin.and.ellipse" )
             newItem.time = Date()
             
         }

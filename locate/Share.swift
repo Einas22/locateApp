@@ -9,12 +9,22 @@ import SwiftUI
 import UIKit
 import Combine
 
+struct Photo: Transferable {
+    static var transferRepresentation: some TransferRepresentation {
+        ProxyRepresentation(exporting: \.image)
+    }
+    public var image: Image
+    public var caption: String
+}
+
 struct Share: View {
     
    // @State private var phoneNumber2 : String = ""
-    @State var name : String// = ""
-    @State var link : String// = ""
-    @State var photo : UIImage// = UIImage(named: "logo")!
+   // @StateObject var vm = ShareViewModel()
+    @State var name : String //= ""
+    @State var link : String //= ""
+    @State var houseNumber : String 
+    @State var photo : UIImage //= UIImage(named: "logo")!
     @State var linkDescription : String //= ""
     @State var showWarning : Bool = false
     @State var phoneNumber = ""
@@ -22,8 +32,6 @@ struct Share: View {
     @State var countryCode = ""
     @State var countryFlag = ""
     @State var showCountryCode : Bool = false
-    
-//
 //
     var body: some View {
            
@@ -39,9 +47,10 @@ struct Share: View {
                 VStack{
                     
                     
-                    Text("Share your Location")
+                    Text("Share \(name) Location")
                         .font(.headline)
                         .foregroundColor(Color.theme.main)
+                        .accessibilityLabel("Share \(name) Location")
                     
                     ZStack{
                         
@@ -53,10 +62,7 @@ struct Share: View {
                                     .stroke(Color.theme.black)
                             )
                             .shadow(radius: 2, x: 0, y: 1)
-                        
-                        
-                        
-                        
+                            .accessibilityHidden(true)
                         
                         HStack(alignment: .center){
                             
@@ -64,34 +70,40 @@ struct Share: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 30, height: 60)
+                                .accessibilityLabel("\(name) Photo")
                             
                             Image("line")
                                 .resizable()
                                 .frame( height: 120)
                                 .scaledToFit()
-                            
-                            
+                                .accessibilityHidden(true)
                             
                             VStack(alignment: .leading){
                                 
                                 Text(name)
                                     .modifier(HeaderTitleModifier())
                                     .padding(.bottom, 3)
+                                    .accessibilityLabel("\(name) Location")
                                 Text(link)
                                     .modifier(SubTitleModifier())
+                                    .accessibilityLabel("Location Link")
+                                Text(houseNumber)
+                                    .modifier(SubTitleModifier())
+                                    .accessibilityLabel("House Number \(houseNumber)")
+                                
+                                    
                             }
-                            .padding()
+                            //.padding()
                             
-                            ShareLink(item: Image(uiImage: photo), subject: Text("\(link)"), preview:
+                        //message: Text("\(link)"),
+                            
+                            ShareLink(item: Image(uiImage: photo) ,message: Text("\(link)"),
+                                      preview:
                                         SharePreview (link, image: Image(uiImage: photo))){
                                 Label("",systemImage:"square.and.arrow.up")
                             }
-                            
-                            
+                                        .accessibilityLabel("Share Link button")
                         }
-                        
-                        
-                        
                     }
                     
                     VStack{
@@ -109,7 +121,9 @@ struct Share: View {
                                         withAnimation (.spring()) {
                                             self.y = 0
                                         }
-                                }
+                                        
+                                    }.accessibilityLabel("Country Code")
+                                
                                 TextField("Phone Number", text: $phoneNumber)
                                     .padding()
                                     .frame(width: 240, height: 50)
@@ -119,7 +133,7 @@ struct Share: View {
                                         if filtered != newValue {
                                             self.phoneNumber = filtered
                                         }
-                                    }
+                                    }.accessibilityLabel("Phone Number")
                             }.padding()
                             
                             if showCountryCode {
@@ -140,7 +154,7 @@ struct Share: View {
                     Button(action:{
                         if !phoneNumber.isEmpty
                         {
-                            ShareBtn(phoneNumber : phoneNumber, link: link)
+                            ShareBtn()
                         }
                         else {
                             showWarning.toggle()
@@ -168,6 +182,7 @@ struct Share: View {
                     })
                     .disabled(!enteredValidNumber())
                     .padding(.bottom, 300)
+                    .accessibilityLabel("Send")
                 }
                 
             }//End ZStack bg
@@ -181,14 +196,15 @@ struct Share: View {
         return false
     }
     
-    func ShareBtn(phoneNumber : String, link: String ){
-        let countryCode = "966" //Country Code
+    func ShareBtn(){
+        let HouseNumber = "House Number"
         let phoneNumber = phoneNumber //Mobile number
-        let link = link 
+        let link = link
+        //"\(link ?? "") %0A<img src="\(photo ?? "")" alt="\(Image("logo"))" width="500" height="600">"
         
 
         // 1
-        let urlWhats = "https://wa.me/\(countryCode)\(phoneNumber)/?text=\(link)"
+        let urlWhats = "https://wa.me/\(countryCode)\(phoneNumber)/?text=\(link)   \(HouseNumber)  \(houseNumber)"
         // 2
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
           // 3
@@ -204,6 +220,11 @@ struct Share: View {
           }
         }
 
+    }
+    
+    func shareLocationWithPhoto() -> Photo {
+        let imgToShare = Photo(image: Image(uiImage: photo), caption: link)
+        return imgToShare
     }
 }
 

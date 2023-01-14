@@ -27,6 +27,13 @@
 "Add a new Location Button" = "زر لاضافه موقع جديد";
 "Edit Button to Edit the location you have" = "زر تعديل مواقعك المضافة";
 "Done button" = "انتهاء من التعديل";
+"House Number" = "رقم المنزل";
+"House Number:" = "رقم المنزل:";
+"Enter Description Neighborhood name - city" = "ادخل معلومات اضافيه اسم الحي - المدينه ";
+"Enter House Number" = "ادخل رقم المنزل";
+"Enter Location Link" = "ادخل رابط الموقع";
+"Enter Location Name" = "ادخل اسم الموقع";
+"Choose Photo From Library" = "اختر صورة للموقع من آلبوم الصور";
 "" = "";
 "" = "";
 "" = "";

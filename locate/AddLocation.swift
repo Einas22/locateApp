@@ -15,6 +15,7 @@ struct AddLocationView: View {
     @State private var isShowingImagePicker: Bool = false
     @State var isImageSelected: Bool?
     @State private var LocationName: String = ""
+    @State private var HouseNumber: String = ""
     @State private var LocationLink: String = ""
     @State private var LocationDescription: String = ""
     
@@ -22,7 +23,7 @@ struct AddLocationView: View {
     @State var showButton: Bool = false
     
     /// Callback after user selects to add contact with given name and image.
-    let onAdd: ((String, String, String, UIImage? , Date) -> Void)?
+    let onAdd: ((String, String, String, String, UIImage? , Date) -> Void)?
     /// Callback after user cancels.
     let onCancel: (() -> Void)?
 
@@ -31,108 +32,129 @@ struct AddLocationView: View {
     var body: some View {
        
         NavigationView{
-           
-            VStack(alignment: .leading){
+            ZStack{
                 
-               
-                HStack{
-                    Text("Location Photo")
+                Image("bg")
+                    .ignoresSafeArea()
+                    .accessibilityHidden(true)
+                
+                
+                VStack(alignment: .leading){
                     
-                        .foregroundColor(Color.theme.main)
                     
-                        .sheet(isPresented: $isShowingImagePicker, onDismiss: nil){
-                            ImagePicker(image: $image, isImageSelected: $isImageSelected)
-                        }
-                    
-                    ZStack{
-                        VStack{
-                            if isImageSelected == true {
-                                Image(uiImage: image!)
-                                    .resizable()
-                                    .frame(width:150, height: 100)
-                                    .cornerRadius(10)
+                    HStack{
+                        Text("Location Photo")
+                        
+                            .foregroundColor(Color.theme.main)
+                        
+                            .sheet(isPresented: $isShowingImagePicker, onDismiss: nil){
+                                ImagePicker(image: $image, isImageSelected: $isImageSelected)
                             }
-                            
-                            else {
-                                Button{
-                                    
-                                    isShowingImagePicker = true
-                                }label: {
-                                    
-                                    VStack {
+                        
+                        ZStack{
+                            VStack{
+                                if isImageSelected == true {
+                                    Image(uiImage: image!)
+                                        .resizable()
+                                        .frame(width:150, height: 100)
+                                        .cornerRadius(10)
+                                }
+                                
+                                else {
+                                    Button{
                                         
-                                        Image(systemName:"photo.on.rectangle")
-                                            .font(.largeTitle)
-                                            .foregroundColor(.gray)
-                                            .padding(.bottom)
+                                        isShowingImagePicker = true
+                                    }label: {
                                         
-                                        
-                                        Text("Select a Photo")
-                                            .foregroundColor(.gray)
-                                        
+                                        VStack {
+                                            
+                                            Image(systemName:"photo.on.rectangle")
+                                                .font(.largeTitle)
+                                                .foregroundColor(.gray)
+                                                .padding(.bottom)
+                                            
+                                            
+                                            Text("Select a Photo")
+                                                .foregroundColor(.gray)
+                                            
+                                        }
                                     }
                                 }
+                                
                             }
                             
+                            //Location Photo
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.theme.black, lineWidth:3)
+                                .foregroundColor(Color.init(UIColor.lightGray).opacity(0.55))
+                                .frame(width:150, height: 100)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                            
+                            
+                        }//End of ZStack for photo picker
+                        
+                    }.accessibilityLabel("Choose Photo From Library")
+                    
+                    // 1- Location Name
+                    Text("Location Name:")
+                        .modifier(SubTitleModifier())
+                    TextField("Location Name",text: $LocationName)
+                        .modifier(TextFieldModifier())
+                        .accessibilityLabel("Enter Location Name")
+                    
+                    // 2- Location Link
+                    Text("Location Link:")
+                        .modifier(SubTitleModifier())
+                    TextField("Location Link",text: $LocationLink)
+                        .modifier(TextFieldModifier())
+                        .accessibilityLabel("Enter Location Link")
+                    
+                    // 3- House Number
+                    Text("House Number:")
+                        .modifier(SubTitleModifier())
+                    TextField("House Number",text: $HouseNumber)
+                        .modifier(TextFieldModifier())
+                        .accessibilityLabel("Enter House Number")
+                    
+                    // 4- Location Description
+                    Text("Description:")
+                        .modifier(SubTitleModifier())
+                    TextField("Neighborhood name - City",
+                              text: $LocationDescription)
+                    .modifier(TextFieldModifier())
+                    .accessibilityLabel("Enter Description Neighborhood name - city")
+                    
+                    
+                    .toolbar{
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Cancel", action: { onCancel?() })
                         }
-                        //Location Photo
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.theme.black, lineWidth:3)
-                            .foregroundColor(Color.init(UIColor.lightGray).opacity(0.55))
-                            .frame(width:150, height: 100)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                        
-                        
-                    }//End of ZStack for photo picker
-                }
-                
-                Text("Location Name:")
-                    .modifier(SubTitleModifier())
-                
-                TextField("Location Name",text: $LocationName)
-                    .modifier(TextFieldModifier())
-                
-                Text("Location Link:")
-                    .modifier(SubTitleModifier())
-                
-                
-                
-                TextField("Location Link",text: $LocationLink)
-                    .modifier(TextFieldModifier())
-                
-                
-                Text("Description:")
-                    .modifier(SubTitleModifier())
-               
-                
-                
-                TextField("Neighborhood name - City - House number",
-                          text: $LocationDescription)
-                .modifier(TextFieldModifier())
-                
-
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button("Cancel", action: { onCancel?() })
-                    }
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button("Add", action: { onAdd?(LocationName, LocationLink, LocationDescription, image ?? UIImage(named: "logo")!, Currenttime) })
+                    }.accessibilityLabel("Cancel")
+                    
+                    .toolbar{
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Add", action: { onAdd?(LocationName,
+                                                           LocationLink,
+                                                           HouseNumber,
+                                                           LocationDescription,
+                                                           image ?? UIImage(named: "logo")!, Currenttime) })
                             .disabled(LocationLink.count <= 10)
-                    }
-                }
+                        }
+                    }.accessibilityLabel("Add Location")
+                    
+                    .foregroundColor(Color.theme.main)
+                    .navigationTitle("Add New Location")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .accessibilityLabel("Add New Location")
+                    Spacer()
+                    
+                }//End VStack
                 
-                .foregroundColor(Color.theme.main)
-                .navigationTitle("Add New Location")
-                .navigationBarTitleDisplayMode(.inline)
-                Spacer()
+                .padding(.leading, 55)
+                .padding(.trailing,55)
                 
-            }//End VStack
-            
-            .padding(.leading, 55)
-            .padding(.trailing,55)
-            
-         
-           
+                
+            }
         }//End Navigation
         
         
