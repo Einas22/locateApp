@@ -16,7 +16,7 @@
 # Overveiw
 Locate is an inclusive IOS app that helps users to store their most important locations along with a photo of the location and any other information in one place. It also features the ability to share any location with anyone easily by one click.<br> 
 Why Locate, because it eases and reduce the process of sharing your location with others specially carriers without saving them as contact and then sharing your location. one step, one click, here I'm ! <br>
-Locate supports voice over for vision disability. It also support two languages English and Arabic.
+Locate supports voice over for vision disability. It also support two languages English and Arabic. also Dark Mood.
 
 # Big Idea
 Inclusion.
@@ -31,6 +31,8 @@ A place that holds the most important locations along with additional informatio
 [![SwiftUI][SwiftUI-img]][SwiftUI-url]   [![Sketch][Sketch-img]][Sketch-url]   [![GitHub][GitHub-img]][GitHub-url]
 
 # Demo of your App
+<a href="https://user-images.githubusercontent.com/116795392/212480186-5fdff300-aa37-4d8f-bd95-f0bf6084a85c.mp4">Demo</a> <br/> <br/> </h3>   
+  </div>   
   
 
 # Challenge Summary
