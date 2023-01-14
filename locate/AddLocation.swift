@@ -128,22 +128,32 @@ struct AddLocationView: View {
                     .toolbar{
                         ToolbarItem(placement: .cancellationAction) {
                             Button("Cancel", action: { onCancel?() })
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.theme.main)
                         }
                     }.accessibilityLabel("Cancel")
                     
                     .toolbar{
                         ToolbarItem(placement: .confirmationAction) {
-                            Button("Add", action: { onAdd?(LocationName,
-                                                           LocationLink,
-                                                           HouseNumber,
-                                                           LocationDescription,
-                                                           image ?? UIImage(named: "logo")!, Currenttime) })
-                            .disabled(LocationLink.count <= 10)
+                            Button("Add", action: {
+                                if !LocationLink.isEmpty {
+                                    onAdd?(LocationName,
+                                           LocationLink,
+                                           HouseNumber,
+                                           LocationDescription,
+                                           image ?? UIImage(named: "logo")!, Currenttime)
+                                }
+                                })
+                            .fontWeight(.bold)
+                            foregroundColor(enteredValidLink() ? Color.theme.main : Color.gray)
+                            
+                            .disabled(!enteredValidLink())
                         }
                     }.accessibilityLabel("Add Location")
                     
-                    .foregroundColor(Color.theme.main)
+                    
                     .navigationTitle("Add New Location")
+                    
                     .navigationBarTitleDisplayMode(.inline)
                     .accessibilityLabel("Add New Location")
                     Spacer()
@@ -160,6 +170,12 @@ struct AddLocationView: View {
         
     }//End Body
     
+    func enteredValidLink() -> Bool {
+        if LocationLink.count >= 10{
+            return true
+        }
+        return false
+    }
     
     
 }//End View
