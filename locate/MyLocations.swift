@@ -9,23 +9,9 @@ import SwiftUI
 
 struct MyLocations: View {
     
-   // @Environment(\.managedObjectContext) private var viewContext
     @StateObject var vm = MyLocationViewModel()
-    
-//    @State private var isShowingAddView = false
-//    @State private var isShowingShare = false
-//    @State private var isEditing = false
-//    @State private var isPresented = false
-//    @State private var numberOfLocations : Int = 0
-    
-//    @FetchRequest(
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Item.time, ascending: true)],
-//        animation: .default)
-//
-//    private var items: FetchedResults<Item>
-//
-//    @State var selectedItem : Item?
-//
+
+
     var body: some View {
         
         NavigationView {
@@ -107,7 +93,7 @@ struct MyLocations: View {
                 
                 VStack(alignment: .leading) {
                     
-                   // let numberOfLocations = vm.items.firstIndex(of: entity)! + 1
+                    let numberOfLocations = vm.savedEntity.firstIndex(of: entity)! + 1
                     
                     HStack{
                         Image(uiImage: entity.photo ?? UIImage(named: "logo")!)
@@ -128,9 +114,9 @@ struct MyLocations: View {
                         
                         
                         VStack(alignment: .leading){
-                            Text(entity.name ?? "Location")// \(numberOfLocations)")
+                            Text(entity.name ?? "Location \(numberOfLocations)")
                                 .modifier(HeaderTitleModifier())
-//                            .accessibilityLabel("Location \(numberOfLocations)\(entity.name ?? "None")")
+                                .accessibilityLabel("Location \(numberOfLocations)\(entity.name ?? "None")")
                                 
                             
                                 .padding(.bottom,3)
