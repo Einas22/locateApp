@@ -9,23 +9,23 @@ import SwiftUI
 
 struct MyLocations: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
-    //@StateObject var vm = MyLocationViewModel()
+   // @Environment(\.managedObjectContext) private var viewContext
+    @StateObject var vm = MyLocationViewModel()
     
-    @State private var isShowingAddView = false
-    @State private var isShowingShare = false
-    @State private var isEditing = false
-    @State private var isPresented = false
-    @State private var numberOfLocations : Int = 0
+//    @State private var isShowingAddView = false
+//    @State private var isShowingShare = false
+//    @State private var isEditing = false
+//    @State private var isPresented = false
+//    @State private var numberOfLocations : Int = 0
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.time, ascending: true)],
-        animation: .default)
-    
-    private var items: FetchedResults<Item>
-  
-    @State var selectedItem : Item?
-    
+//    @FetchRequest(
+//        sortDescriptors: [NSSortDescriptor(keyPath: \Item.time, ascending: true)],
+//        animation: .default)
+//
+//    private var items: FetchedResults<Item>
+//
+//    @State var selectedItem : Item?
+//
     var body: some View {
         
         NavigationView {
@@ -45,19 +45,19 @@ struct MyLocations: View {
                     
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
-                                Button(isEditing ? "Done" : "Edit")
+                                Button(vm.isEditing ? "Done" : "Edit")
                                 {
-                                    withAnimation { isEditing.toggle() }
+                                    withAnimation { vm.isEditing.toggle() }
                                     
                                 }
                                 .fontWeight(.bold)
-                                .accessibilityLabel ("\(isEditing ? "Done From Editing" : "Edit the locations you have")")
+                                .accessibilityLabel ("\(vm.isEditing ? "Done From Editing" : "Edit the locations you have")")
                             }
                         }
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button{
-                                    isShowingAddView.toggle()
+                                    vm.isShowingAddView.toggle()
                                 } label: {
                                     Image(systemName: "plus.circle")
                                         .fontWeight(.bold)
@@ -79,21 +79,21 @@ struct MyLocations: View {
             
         }//End Navigation
         
-        .sheet(isPresented: $isPresented, content: {
-            Share(name: selectedItem?.name ?? "", link: selectedItem?.link ?? "", houseNumber: selectedItem?.houseNumber ?? "", photo: selectedItem?.photo ?? UIImage(named: "logo")!, linkDescription: selectedItem?.linkDescription ?? "")
+        .sheet(isPresented: $vm.isPresented, content: {
+            Share(name: vm.selectedItem?.name ?? "", link: vm.selectedItem?.link ?? "", houseNumber: vm.selectedItem?.houseNumber ?? "", photo: vm.selectedItem?.photo ?? UIImage(named: "logo")!, linkDescription: vm.selectedItem?.linkDescription ?? "")
         })
-        .sheet(isPresented: $isShowingAddView, content: {
+        .sheet(isPresented: $vm.isShowingAddView, content: {
             AddLocationView(onAdd: { LocationName, LocationLink, houseNumber, LocationDescription, image , time in
-                isShowingAddView = false
-                addContact(LocationName: LocationName, LocationLink: LocationLink, HouseNumber: houseNumber,  LocationDescription: LocationDescription, photo: image , time: time)
-            }, onCancel: { isShowingAddView = false })
+                vm.isShowingAddView = false
+                vm.addItem(LocationName: LocationName, LocationLink: LocationLink, HouseNumber: houseNumber,  LocationDescription: LocationDescription, photo: image , time: time)
+            }, onCancel: { vm.isShowingAddView = false })
         })
        
     }//End Body
     
     private var listView: some View {
-       
-        ForEach(items) { contact in
+        
+        ForEach(vm.savedEntity) { entity in
             
             ZStack{
                 RoundedRectangle(cornerRadius: 25)
@@ -107,14 +107,14 @@ struct MyLocations: View {
                 
                 VStack(alignment: .leading) {
                     
-                    let numberOfLocations = items.firstIndex(of: contact)! + 1
+                   // let numberOfLocations = vm.items.firstIndex(of: entity)! + 1
                     
                     HStack{
-                        Image(uiImage: contact.photo ?? UIImage(named: "logo")!)
+                        Image(uiImage: entity.photo ?? UIImage(named: "logo")!)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 50, height: 50)
-                            .accessibilityLabel("\(contact.name ?? "None") Photo")
+                            .accessibilityLabel("\(entity.name ?? "None") Photo")
                             
                             
                             
@@ -124,48 +124,40 @@ struct MyLocations: View {
                             .frame( height: 80)
                             .scaledToFit()
                             .padding(.top)
-                            .accessibilityLabel("\(contact.name ?? "None") Photo")
+                            .accessibilityLabel("\(entity.name ?? "None") Photo")
                         
                         
                         VStack(alignment: .leading){
-                            Text(contact.name ?? "Location \(numberOfLocations)")
+                            Text(entity.name ?? "Location")// \(numberOfLocations)")
                                 .modifier(HeaderTitleModifier())
-                            .accessibilityLabel("Location \(numberOfLocations)\(contact.name ?? "None")")
+//                            .accessibilityLabel("Location \(numberOfLocations)\(entity.name ?? "None")")
                                 
                             
                                 .padding(.bottom,3)
-                            Text(contact.link ?? "None")
+                            Text(entity.link ?? "None")
                                 .modifier(SubTitleModifier())
-                                .accessibilityLabel("\(contact.name ?? "None") location link")
-                            Text(contact.houseNumber ?? "")
+                                .accessibilityLabel("\(entity.name ?? "None") location link")
+                            Text(entity.houseNumber ?? "")
                                 .modifier(SubTitleModifier())
-                                .accessibilityLabel("House Number \(contact.houseNumber ?? " None") ")
+                                .accessibilityLabel("House Number \(entity.houseNumber ?? " None") ")
                             
                         }
                         //.padding()
                         
                         Button {
-                            isPresented.toggle()
-                            selectedItem = contact
+                            vm.isPresented.toggle()
+                            vm.selectedItem = entity
                         } label: {
                             Image(systemName: "square.and.arrow.up")
                                 
                         }.accessibilityLabel("Share button")
                         
-                        if isEditing {
+                        if vm.isEditing {
                             
                             Button {
                                 withAnimation {
-                                    let index = items.firstIndex(of: contact)!
-                                    items.map{_ in
-                                        items[index]}.forEach(viewContext.delete)
-                                    
-                                    do {
-                                        try viewContext.save()
-                                    } catch {
-                                        let nsError = error as NSError
-                                        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                                    }
+                                    let index = vm.savedEntity.firstIndex(of: entity)!
+                                    vm.deleteItem(index: index)
                                 }
                             } label: {
                                 Image(systemName: "x.circle.fill")
@@ -177,9 +169,9 @@ struct MyLocations: View {
                     }//HStack
                     
                     
-                    Text(contact.linkDescription ?? "")
+                    Text(entity.linkDescription ?? "")
                         .modifier(SubTitleModifier())
-                        .accessibilityLabel(" \(contact.linkDescription ?? "None")")
+                        .accessibilityLabel(" \(entity.linkDescription ?? "None")")
                     
                         
                     
@@ -193,35 +185,6 @@ struct MyLocations: View {
         } // End For Each
         //.accessibilityLabel("List of your locations")
         
-    }
-    
-    private func addContact(LocationName: String, LocationLink: String, HouseNumber: String, LocationDescription: String, photo: UIImage? , time: Date) {
-        let newContact = Item(context: viewContext)
-        newContact.name = LocationName
-        newContact.link = LocationLink
-        newContact.houseNumber = HouseNumber
-        newContact.linkDescription = LocationDescription
-        newContact.photo = photo
-        newContact.time = time
-
-        do {
-            try viewContext.save()
-        } catch {
-            fatalError("Error: \(error)")
-        }
-    }
-
-
-
-    private func deleteContacts(offsets: IndexSet) {
-        offsets.map { items[$0] }.forEach(viewContext.delete)
-
-        do {
-            try viewContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
     }
     
 }//End View
