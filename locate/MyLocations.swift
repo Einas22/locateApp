@@ -10,12 +10,13 @@ import SwiftUI
 struct MyLocations: View {
     
     @Environment(\.managedObjectContext) private var viewContext
+    //@StateObject var vm = MyLocationViewModel()
     
     @State private var isShowingAddView = false
     @State private var isShowingShare = false
     @State private var isEditing = false
     @State private var isPresented = false
-   // @State private var numberOfLocations : Int = 0
+    @State private var numberOfLocations : Int = 0
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.time, ascending: true)],
@@ -156,7 +157,8 @@ struct MyLocations: View {
                             Button {
                                 withAnimation {
                                     let index = items.firstIndex(of: contact)!
-                                    items.map{_ in items[index]}.forEach(viewContext.delete)
+                                    items.map{_ in
+                                        items[index]}.forEach(viewContext.delete)
                                     
                                     do {
                                         try viewContext.save()
@@ -201,19 +203,19 @@ struct MyLocations: View {
         newContact.linkDescription = LocationDescription
         newContact.photo = photo
         newContact.time = time
-        
+
         do {
             try viewContext.save()
         } catch {
             fatalError("Error: \(error)")
         }
     }
-    
-    
-    
+
+
+
     private func deleteContacts(offsets: IndexSet) {
         offsets.map { items[$0] }.forEach(viewContext.delete)
-        
+
         do {
             try viewContext.save()
         } catch {

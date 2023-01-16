@@ -46,11 +46,14 @@ struct Share: View {
                 
                 VStack{
                     
-                    
-                    Text("Share \(name) Location")
-                        .font(.headline)
-                        .foregroundColor(Color.theme.main)
-                        .accessibilityLabel("Share \(name) Location")
+                    HStack{
+                        Text("Share ")
+                        Text(name)
+                        Text(" Location")
+                    }
+                    .font(.headline)
+                    .foregroundColor(Color.theme.main)
+                    .accessibilityLabel("Share \(name) Location")
                     
                     ZStack{
                         
@@ -97,8 +100,11 @@ struct Share: View {
                             
                         //message: Text("\(link)"),
                             
-                            ShareLink(item: Image(uiImage: photo) ,message: Text("\(link)"),
-                                      preview:
+//                            ShareLink(item: Image(uiImage: photo) ,message: Text("\(link)"),
+//                                      preview:
+//                                        SharePreview (link, image: Image(uiImage: photo))){
+//                                Label("",systemImage:"square.and.arrow.up")
+                            ShareLink(item: Image(uiImage: photo), subject: Text("\(link)"), preview:
                                         SharePreview (link, image: Image(uiImage: photo))){
                                 Label("",systemImage:"square.and.arrow.up")
                             }

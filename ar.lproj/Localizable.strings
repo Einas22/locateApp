@@ -15,7 +15,7 @@
 "Location Photo" = "صوره للموقع";
 "Select a Photo" = "اختر صوره";
 "Location Name:" = "اسم الموقع:";
-"Location Link:" = "رابط الموقع:";
+"*Location Link:" = "رابط الموقع:";
 "Description:" = "وصف للموقع:";
 "Location Name" = "اسم الموقع";
 "Location Link" = "رابط الموقع";
@@ -34,8 +34,7 @@
 "Enter Location Link" = "ادخل رابط الموقع";
 "Enter Location Name" = "ادخل اسم الموقع";
 "Choose Photo From Library" = "اختر صورة للموقع من آلبوم الصور";
-"" = "";
-"" = "";
-"" = "";
+"Share " = "مشاركة ";
+" Location" = " موقع";
 "" = "";
 "" = "";

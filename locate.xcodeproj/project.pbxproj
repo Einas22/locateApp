@@ -13,6 +13,7 @@
 		50AA46F5296F7B9800B7A8F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50AA46F4296F7B9800B7A8F6 /* LaunchScreen.storyboard */; };
 		50AA46F7296FF84C00B7A8F6 /* MyLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA46F6296FF84C00B7A8F6 /* MyLocationsViewModel.swift */; };
 		50AA46FF296FFE5600B7A8F6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50AA4701296FFE5600B7A8F6 /* Localizable.strings */; };
+		50AA47052975746A00B7A8F6 /* MyLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA47042975746A00B7A8F6 /* MyLocationViewModel.swift */; };
 		50CF9C89296E8EA500371C6B /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF9C88296E8EA500371C6B /* Share.swift */; };
 		50CF9C8B296EA96B00371C6B /* testshare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF9C8A296EA96B00371C6B /* testshare.swift */; };
 		50CF9C8F296F123200371C6B /* TestAddLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF9C8E296F123200371C6B /* TestAddLocation.swift */; };
@@ -35,6 +36,7 @@
 		50AA46F4296F7B9800B7A8F6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50AA46F6296FF84C00B7A8F6 /* MyLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationsViewModel.swift; sourceTree = "<group>"; };
 		50AA4700296FFE5600B7A8F6 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		50AA47042975746A00B7A8F6 /* MyLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationViewModel.swift; sourceTree = "<group>"; };
 		50CF9C88296E8EA500371C6B /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		50CF9C8A296EA96B00371C6B /* testshare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testshare.swift; sourceTree = "<group>"; };
 		50CF9C8E296F123200371C6B /* TestAddLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddLocation.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				50F00AEB296A9D6600D71D20 /* locateApp.swift */,
 				50F00B00296AA74600D71D20 /* MyLocations.swift */,
+				50AA47042975746A00B7A8F6 /* MyLocationViewModel.swift */,
 				50CF9C88296E8EA500371C6B /* Share.swift */,
 				50F00B06296C183800D71D20 /* AddLocation.swift */,
 				50AA46ED296F3A3D00B7A8F6 /* CountryCodes.swift */,
@@ -208,6 +211,7 @@
 				50F00B07296C183800D71D20 /* AddLocation.swift in Sources */,
 				50CF9C89296E8EA500371C6B /* Share.swift in Sources */,
 				50F00AF8296A9D6700D71D20 /* locate.xcdatamodeld in Sources */,
+				50AA47052975746A00B7A8F6 /* MyLocationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

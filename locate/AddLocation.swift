@@ -103,7 +103,7 @@ struct AddLocationView: View {
                         .accessibilityLabel("Enter Location Name")
                     
                     // 2- Location Link
-                    Text("Location Link:")
+                    Text("*Location Link:")
                         .modifier(SubTitleModifier())
                     TextField("Location Link",text: $LocationLink)
                         .modifier(TextFieldModifier())
@@ -135,7 +135,7 @@ struct AddLocationView: View {
                     
                     .toolbar{
                         ToolbarItem(placement: .confirmationAction) {
-                            Button("Add", action: {
+                            Button(action: {
                                 if !LocationLink.isEmpty {
                                     onAdd?(LocationName,
                                            LocationLink,
@@ -143,11 +143,13 @@ struct AddLocationView: View {
                                            LocationDescription,
                                            image ?? UIImage(named: "logo")!, Currenttime)
                                 }
-                                })
-                            .fontWeight(.bold)
-                            foregroundColor(enteredValidLink() ? Color.theme.main : Color.gray)
-                            
+                            } ,label: {
+                                Text("Add")
+                                .fontWeight(.bold)
+                                .foregroundColor(enteredValidLink() ? Color.theme.main : Color.gray)
+                            })
                             .disabled(!enteredValidLink())
+                                
                         }
                     }.accessibilityLabel("Add Location")
                     
