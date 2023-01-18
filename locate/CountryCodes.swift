@@ -7,6 +7,18 @@
 
 import SwiftUI
 
+class ObservableTextField: ObservableObject {
+    
+    @Published var value = "" {
+        didSet {
+            if value.count > 3 {
+                value = String(value.prefix(3))
+            }
+        }
+    }
+    
+}
+
 struct CountryCodes: View {
     let countryDictionary  = ["AF":"93","AL":"355","DZ":"213","US":"1",
                                 "AD":"376","AO":"244","AI":"1","AG":"1","AR":"54",
@@ -76,9 +88,9 @@ struct CountryCodes: View {
                               }
                       }
                   }
-                  .padding(.bottom)
-                  .frame(width: geo.size.width, height: 300)
-                  .position(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).maxY - 150)
+                 // .padding(.bottom)
+                  .frame(width: geo.size.width, height: 400)
+                 
                   
               }
     }
@@ -97,8 +109,9 @@ struct CountryCodes: View {
         }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        CountryCodes(countryCode: .constant("966"), countryFlag: .constant("🇸🇦"), y: .constant(0))
+    }
+}

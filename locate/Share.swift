@@ -40,14 +40,15 @@ struct Share: View {
     var body: some View {
            
         NavigationView{
-            ZStack{
-                
-//                Image("bg")
-//                    .ignoresSafeArea()
-//                    .accessibilityHidden(true)
-                
-                
-                
+            GeometryReader { geo in
+              //  ZStack{
+                    
+                    //                Image("bg")
+                    //                    .ignoresSafeArea()
+                    //                    .accessibilityHidden(true)
+                    
+                    
+                    
                 VStack{
                     
                     HStack{
@@ -59,66 +60,66 @@ struct Share: View {
                     .foregroundColor(Color.theme.main)
                     .accessibilityLabel("Share \( name) Location")
                     
-                        ZStack{
+                    ZStack{
+                        
+                        RoundedRectangle(cornerRadius: 25)
+                            .frame(width: 350, height: 150)
+                            .foregroundColor(Color.theme.white)
+                            .overlay(
+                                RoundedRectangle(cornerRadius:25)
+                                    .stroke(Color.theme.black)
+                            )
+                            .shadow(radius: 2, x: 0, y: 1)
+                            .accessibilityHidden(true)
+                        VStack(alignment: .leading) {
                             
-                            RoundedRectangle(cornerRadius: 25)
-                                .frame(width: 350, height: 150)
-                                .foregroundColor(Color.theme.white)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius:25)
-                                        .stroke(Color.theme.black)
-                                )
-                                .shadow(radius: 2, x: 0, y: 1)
-                                .accessibilityHidden(true)
-                            VStack(alignment: .leading) {
-                               
-                                HStack(alignment: .center){
-                                    
-                                    Image(uiImage:  photo)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 30, height: 60)
-                                        .accessibilityLabel("\( name) Photo")
-                                    
-                                    Image("line")
-                                        .resizable()
-                                        .frame( height: 80)
-                                        .scaledToFit()
-                                        .accessibilityHidden(true)
-                                    
-                                    VStack(alignment: .leading){
-                                        
-                                        Text( name)
-                                            .modifier(HeaderTitleModifier())
-                                            .padding(.bottom, 3)
-                                            .accessibilityLabel("\( name) Location")
-                                        
-                                        Text( houseNumber)
-                                            .modifier(SubTitleModifier())
-                                            .accessibilityLabel("House Number \( houseNumber)")
-                                        
-                                        
-                                    }
-                                    //.padding()
-                                    //message: Text("\(link)"),
-                                    
-                                    //                            ShareLink(item: Image(uiImage: photo) ,message: Text("\(link)"),
-                                    //                                      preview:
-                                    //                                        SharePreview (link, image: Image(uiImage: photo))){
-                                    //                                Label("",systemImage:"square.and.arrow.up")
-                                    ShareLink(item: Image(uiImage:  photo), subject: Text("\( link)"), preview:
-                                                SharePreview ( link, image: Image(uiImage:  photo))){
-                                        Label("",systemImage:"square.and.arrow.up")
-                                    }
-                                                .accessibilityLabel("Share Link button")
-                                }
+                            HStack(alignment: .center){
                                 
-                                Text( link)
-                                    .modifier(SubTitleModifier())
-                                    .accessibilityLabel("Location Link")
+                                Image(uiImage:  photo)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 60)
+                                    .accessibilityLabel("\( name) Photo")
+                                
+                                Image("line")
+                                    .resizable()
+                                    .frame( height: 80)
+                                    .scaledToFit()
+                                    .accessibilityHidden(true)
+                                
+                                VStack(alignment: .leading){
+                                    
+                                    Text( name)
+                                        .modifier(HeaderTitleModifier())
+                                        .padding(.bottom, 3)
+                                        .accessibilityLabel("\( name) Location")
+                                    
+                                    Text( houseNumber)
+                                        .modifier(SubTitleModifier())
+                                        .accessibilityLabel("House Number \( houseNumber)")
+                                    
+                                    
+                                }
+                                //.padding()
+                                //message: Text("\(link)"),
+                                
+                                //                            ShareLink(item: Image(uiImage: photo) ,message: Text("\(link)"),
+                                //                                      preview:
+                                //                                        SharePreview (link, image: Image(uiImage: photo))){
+                                //                                Label("",systemImage:"square.and.arrow.up")
+                                ShareLink(item: Image(uiImage:  photo), subject: Text("\( link)"), preview:
+                                            SharePreview ( link, image: Image(uiImage:  photo))){
+                                    Label("",systemImage:"square.and.arrow.up")
+                                }
+                                            .accessibilityLabel("Share Link button")
                             }
+                            
+                            Text( link)
+                                .modifier(SubTitleModifier())
+                                .accessibilityLabel("Location Link")
+                        }
                     }
-                   
+                    
                     VStack{
                         Text("Enter number to send location by WhatsApp:")
                         
@@ -130,7 +131,7 @@ struct Share: View {
                                     .cornerRadius(10)
                                     .foregroundColor( countryCode.isEmpty ? .secondary : .black)
                                     .onTapGesture {
-                                         showCountryCode.toggle()
+                                        showCountryCode.toggle()
                                         withAnimation (.spring()) {
                                             self.y = 0
                                         }
@@ -149,19 +150,16 @@ struct Share: View {
                                     }.accessibilityLabel("Phone Number")
                             }.padding()
                             
-                            if showCountryCode {
-                                CountryCodes(countryCode: $countryCode, countryFlag: $countryFlag, y: $y)
-                                    .offset(y: y)
-                            }
                             
                             
                             RoundedRectangle(cornerRadius: 10).stroke()
-                            .frame(width: 340, height: 50)
+                                .frame(width: 340, height: 50)
                         }
+                        
                         
                     }
                     .padding()
-                    
+                    ZStack{
                     Button(action:{
                         if !phoneNumber.isEmpty
                         {
@@ -173,7 +171,7 @@ struct Share: View {
                     }
                            ,label: {
                         Text("Send")
-                            //.modifier(ButtonModifier())
+                        //.modifier(ButtonModifier())
                             .frame(minWidth: 0, maxWidth:320)
                             .fontWeight(.bold)
                             .font(.system(size: 20))
@@ -182,10 +180,10 @@ struct Share: View {
                             .cornerRadius(10)
                             .foregroundColor(.white)
                             .padding(10)
-//                            .overlay(
-//                                RoundedRectangle(cornerRadius: 40)
-//                                    .stroke(Color.theme.black, lineWidth: 2)
-//                            )
+                        //                            .overlay(
+                        //                                RoundedRectangle(cornerRadius: 40)
+                        //                                    .stroke(Color.theme.black, lineWidth: 2)
+                        //                            )
                             .shadow(radius: 2, x: 0, y: 1)
                         
                         
@@ -194,23 +192,29 @@ struct Share: View {
                     .disabled(!enteredValidNumber())
                     //.padding(.bottom, 300)
                     .accessibilityLabel("Send")
-                    
-                    Spacer()
-                    
-                    .toolbar{
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button(action: { isPresented.toggle() }
-                            , label: {
-                                Image(systemName: "x.circle")
-                            })
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.theme.main)
-                        }
-                    }.accessibilityLabel("close")
+                    if showCountryCode {
+                        CountryCodes(countryCode: $countryCode, countryFlag: $countryFlag, y: $y)
+                        //.offset(y: y)
+                        // .position(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).maxY - 150)
+                    }
                 }
-                .ignoresSafeArea()
-                .padding(.top,15)
-            }//End ZStack bg
+                        Spacer()
+                        
+                            .toolbar{
+                                ToolbarItem(placement: .cancellationAction) {
+                                    Button(action: { isPresented.toggle() }
+                                           , label: {
+                                        Image(systemName: "x.circle")
+                                    })
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.theme.main)
+                                }
+                            }.accessibilityLabel("close")
+                    }
+                    .ignoresSafeArea(.container)
+                    .padding(.top,15)
+             //   }//End ZStack
+            }
         }//End Navigation
     }//End Body
     
