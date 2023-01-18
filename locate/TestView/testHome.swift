@@ -13,29 +13,20 @@ struct test: View {
     @State private var isShowingShare = false
     @State private var isEditing = false
     let photo = Image("logo")
+    @State var frameSize = UIScreen.main.bounds.width
     
     var body: some View {
-        NavigationStack{
+        //NavigationStack{
 //            ZStack{
 //                Image("bg")
 //                    .ignoresSafeArea()
-                Text("My Locations")
-                .modifier(HeaderTitleModifier())
-                .font(.title)
+               
             
                 ScrollView{
                     
                     ForEach (0..<3) { n in
                         
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 25)
-                                .frame(width: 350, height: 150)
-                                .foregroundColor(Color.theme.white)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius:25)
-                                        .stroke(Color.theme.black)
-                                )
-                                .shadow(radius: 2, x: 0, y: 1)
+
                             
                             VStack(alignment: .leading){
                                 
@@ -66,16 +57,28 @@ struct test: View {
                                         Label("",systemImage:"square.and.arrow.up")
                                     }
                                     
-                                }
-                                Text("Description //////////////")
-                                    .padding(.bottom)
-                                    .foregroundColor(Color.theme.black)
+                                }//.frame(width: frameSize - 60, height: 95)
+                                
+                                VStack(alignment: .leading){
+                                    Text("Location Link:")
+                                    Text("Description ////////////////////////////////////")
+                                        .padding(.bottom)
+                                        .foregroundColor(Color.theme.black)
+                                }//.frame(width: frameSize - 50, height: 55)
+                                
                             }
+                                .frame(width: frameSize - 40, height: 150)
+                                //.foregroundColor(Color.theme.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius:25)
+                                        .stroke(Color.theme.black)
+                                )
+                                .shadow(radius: 2, x: 0, y: 1)
                         }
-                    }
+                   // }
                     .padding(.top,30)
 
-                    .padding(.leading, 45)
+                    //.padding(.leading, 45)
 
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
@@ -93,8 +96,8 @@ struct test: View {
                         }
                     }
                     .fontWeight(.bold)
-//                    .navigationBarTitle("My Locations")
-//                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarTitle("My Locations")
+                    .navigationBarTitleDisplayMode(.inline)
                     .font(.headline)
                     .foregroundColor(Color.theme.main)
 //                    .navigationBarHidden(false)
@@ -103,7 +106,7 @@ struct test: View {
                     
                 }
             //}
-        }
+       // }
     }
 }
 

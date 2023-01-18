@@ -77,7 +77,7 @@ func body(content: Content) -> some View {
             RoundedRectangle(cornerRadius:10)
                 .stroke(Color.theme.black)
         )
-        .shadow(radius: 4, x: 0, y: 2)
+        .shadow(color: Color.theme.main.opacity(0.3), radius: 10, x: 0, y: 10)
 }
 }
 
