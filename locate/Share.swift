@@ -100,7 +100,8 @@ struct Share: View {
                                 Label("",systemImage:"square.and.arrow.up")
                             }
                                         .foregroundColor(Color.theme.main)
-                                        .accessibilityLabel("Share Link button")
+                                        .fontWeight(.bold)
+                                        .accessibilityLabel("Share Link")
                         }//End HStack for location card
                        
                         //Location Link

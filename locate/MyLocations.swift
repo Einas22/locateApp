@@ -133,7 +133,7 @@ struct MyLocations: View {
                         } label: {
                             Image(systemName: "square.and.arrow.up")
                                 
-                        }.accessibilityLabel("Share button")
+                        }.accessibilityLabel("Share location")
                             .foregroundColor(Color.theme.main)
                             .fontWeight(.bold)
                         

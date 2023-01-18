@@ -35,6 +35,7 @@
 		50AA47062976E6FF00B7A8F6 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
 		50AA470E29785FEA00B7A8F6 /* Share2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share2.swift; sourceTree = "<group>"; };
 		50CF9C88296E8EA500371C6B /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
+		50E38BCE2978A37F008D0360 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		50F00AE8296A9D6600D71D20 /* locate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = locate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F00AEB296A9D6600D71D20 /* locateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locateApp.swift; sourceTree = "<group>"; };
 		50F00AEF296A9D6700D71D20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 		50F00AEA296A9D6600D71D20 /* locate */ = {
 			isa = PBXGroup;
 			children = (
+				50E38BCE2978A37F008D0360 /* Info.plist */,
 				50F00AEB296A9D6600D71D20 /* locateApp.swift */,
 				50F00B00296AA74600D71D20 /* MyLocations.swift */,
 				50AA47042975746A00B7A8F6 /* MyLocationViewModel.swift */,
@@ -334,6 +336,8 @@
 				DEVELOPMENT_TEAM = 74728JD6TY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = locate/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Locate would like to access your photo album to add photos for your locations!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -363,6 +367,8 @@
 				DEVELOPMENT_TEAM = 74728JD6TY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = locate/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Locate would like to access your photo album to add photos for your locations!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
