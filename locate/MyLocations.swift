@@ -135,7 +135,7 @@ struct MyLocations: View {
                                 
                         }.accessibilityLabel("Share button")
                             .foregroundColor(Color.theme.main)
-                            //.fontWeight(.bold)
+                            .fontWeight(.bold)
                         
                         
                         //Delete button only shows when the users clicks Edit
