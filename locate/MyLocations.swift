@@ -65,7 +65,12 @@ struct MyLocations: View {
         }//End Navigation
         
         .sheet(isPresented: $isPresented, content: {
-            Share(name: vm.selectedItem?.name ?? "", link: vm.selectedItem?.link ?? "", houseNumber: vm.selectedItem?.houseNumber ?? "", photo: vm.selectedItem?.photo ?? UIImage(named: "logo")!, linkDescription: vm.selectedItem?.linkDescription ?? "",isPresented: $isPresented)
+            Share(name: vm.selectedItem?.name ?? "",
+                  link: vm.selectedItem?.link ?? "",
+                  houseNumber: vm.selectedItem?.houseNumber ?? "",
+                  photo: vm.selectedItem?.photo ?? UIImage(named: "logo")!,
+                  linkDescription: vm.selectedItem?.linkDescription ?? "",
+                  isPresented: $isPresented)
         })
         .sheet(isPresented: $vm.isShowingAddView, content: {
             AddLocationView(onAdd: { LocationName, LocationLink, houseNumber, LocationDescription, image , time in

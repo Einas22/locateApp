@@ -8,15 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		50AA46EE296F3A3D00B7A8F6 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA46ED296F3A3D00B7A8F6 /* CountryCodes.swift */; };
-		50AA46F0296F5BD600B7A8F6 /* TestAddLocation2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA46EF296F5BD600B7A8F6 /* TestAddLocation2.swift */; };
 		50AA46F3296F74AC00B7A8F6 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA46F2296F74AC00B7A8F6 /* SplashScreen.swift */; };
 		50AA46F5296F7B9800B7A8F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50AA46F4296F7B9800B7A8F6 /* LaunchScreen.storyboard */; };
 		50AA46FF296FFE5600B7A8F6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50AA4701296FFE5600B7A8F6 /* Localizable.strings */; };
 		50AA47052975746A00B7A8F6 /* MyLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA47042975746A00B7A8F6 /* MyLocationViewModel.swift */; };
 		50AA47072976E6FF00B7A8F6 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA47062976E6FF00B7A8F6 /* ShareViewModel.swift */; };
-		50AA470D29782EFD00B7A8F6 /* testHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA470C29782EFD00B7A8F6 /* testHome.swift */; };
+		50AA470F29785FEA00B7A8F6 /* Share2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA470E29785FEA00B7A8F6 /* Share2.swift */; };
 		50CF9C89296E8EA500371C6B /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF9C88296E8EA500371C6B /* Share.swift */; };
-		50CF9C8B296EA96B00371C6B /* testshare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF9C8A296EA96B00371C6B /* testshare.swift */; };
 		50F00AEC296A9D6600D71D20 /* locateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F00AEB296A9D6600D71D20 /* locateApp.swift */; };
 		50F00AF0296A9D6700D71D20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F00AEF296A9D6700D71D20 /* Assets.xcassets */; };
 		50F00AF3296A9D6700D71D20 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50F00AF2296A9D6700D71D20 /* Preview Assets.xcassets */; };
@@ -30,15 +28,13 @@
 
 /* Begin PBXFileReference section */
 		50AA46ED296F3A3D00B7A8F6 /* CountryCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodes.swift; sourceTree = "<group>"; };
-		50AA46EF296F5BD600B7A8F6 /* TestAddLocation2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddLocation2.swift; sourceTree = "<group>"; };
 		50AA46F2296F74AC00B7A8F6 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		50AA46F4296F7B9800B7A8F6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50AA4700296FFE5600B7A8F6 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50AA47042975746A00B7A8F6 /* MyLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationViewModel.swift; sourceTree = "<group>"; };
 		50AA47062976E6FF00B7A8F6 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
-		50AA470C29782EFD00B7A8F6 /* testHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testHome.swift; sourceTree = "<group>"; };
+		50AA470E29785FEA00B7A8F6 /* Share2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share2.swift; sourceTree = "<group>"; };
 		50CF9C88296E8EA500371C6B /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
-		50CF9C8A296EA96B00371C6B /* testshare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testshare.swift; sourceTree = "<group>"; };
 		50F00AE8296A9D6600D71D20 /* locate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = locate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F00AEB296A9D6600D71D20 /* locateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locateApp.swift; sourceTree = "<group>"; };
 		50F00AEF296A9D6700D71D20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,16 +58,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		50AA46F1296F67F000B7A8F6 /* TestView */ = {
-			isa = PBXGroup;
-			children = (
-				50AA470C29782EFD00B7A8F6 /* testHome.swift */,
-				50AA46EF296F5BD600B7A8F6 /* TestAddLocation2.swift */,
-				50CF9C8A296EA96B00371C6B /* testshare.swift */,
-			);
-			path = TestView;
-			sourceTree = "<group>";
-		};
 		50F00ADF296A9D6600D71D20 = {
 			isa = PBXGroup;
 			children = (
@@ -96,11 +82,11 @@
 				50F00B00296AA74600D71D20 /* MyLocations.swift */,
 				50AA47042975746A00B7A8F6 /* MyLocationViewModel.swift */,
 				50CF9C88296E8EA500371C6B /* Share.swift */,
+				50AA470E29785FEA00B7A8F6 /* Share2.swift */,
 				50AA47062976E6FF00B7A8F6 /* ShareViewModel.swift */,
 				50F00B06296C183800D71D20 /* AddLocation.swift */,
 				50AA46ED296F3A3D00B7A8F6 /* CountryCodes.swift */,
 				50F00B08296C46A700D71D20 /* ImagePicker.swift */,
-				50AA46F1296F67F000B7A8F6 /* TestView */,
 				50F00AEF296A9D6700D71D20 /* Assets.xcassets */,
 				50AA46F4296F7B9800B7A8F6 /* LaunchScreen.storyboard */,
 				50AA46F2296F74AC00B7A8F6 /* SplashScreen.swift */,
@@ -195,9 +181,7 @@
 			files = (
 				50F00B03296AAEE700D71D20 /* AppModifiers.swift in Sources */,
 				50F00AF5296A9D6700D71D20 /* Persistence.swift in Sources */,
-				50CF9C8B296EA96B00371C6B /* testshare.swift in Sources */,
 				50AA47072976E6FF00B7A8F6 /* ShareViewModel.swift in Sources */,
-				50AA46F0296F5BD600B7A8F6 /* TestAddLocation2.swift in Sources */,
 				50AA46EE296F3A3D00B7A8F6 /* CountryCodes.swift in Sources */,
 				50F00B09296C46A700D71D20 /* ImagePicker.swift in Sources */,
 				50AA46F3296F74AC00B7A8F6 /* SplashScreen.swift in Sources */,
@@ -205,7 +189,7 @@
 				50F00B01296AA74600D71D20 /* MyLocations.swift in Sources */,
 				50F00B07296C183800D71D20 /* AddLocation.swift in Sources */,
 				50CF9C89296E8EA500371C6B /* Share.swift in Sources */,
-				50AA470D29782EFD00B7A8F6 /* testHome.swift in Sources */,
+				50AA470F29785FEA00B7A8F6 /* Share2.swift in Sources */,
 				50F00AF8296A9D6700D71D20 /* locate.xcdatamodeld in Sources */,
 				50AA47052975746A00B7A8F6 /* MyLocationViewModel.swift in Sources */,
 			);

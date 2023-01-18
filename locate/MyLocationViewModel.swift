@@ -14,7 +14,6 @@ class MyLocationViewModel : ObservableObject {
     @Published var isShowingAddView = false
     @Published var isShowingShare = false
     @Published var isEditing = false
-   // @Published var isPresented = false
     @Published var numberOfLocations : Int = 0
     @Published var savedEntity: [Item] = []
     @Published var selectedItem : Item?

@@ -9,14 +9,6 @@ import SwiftUI
 import UIKit
 import Combine
 
-struct Photo: Transferable {
-    static var transferRepresentation: some TransferRepresentation {
-        ProxyRepresentation(exporting: \.image)
-    }
-    public var image: Image
-    public var caption: String
-}
-
 struct Share: View {
     
     @State private var phoneNumber2 : String = ""
@@ -27,13 +19,13 @@ struct Share: View {
     @State var linkDescription : String //= ""
     @State var showWarning : Bool = false
     @State var phoneNumber = ""
-   // @State var y : CGFloat = 50
-    //@State var countryCode = ""
-   // @State var countryFlag = ""
+    @State var y : CGFloat = 50
+    @State var countryCode = ""
+    @State var countryFlag = ""
     @State var showCountryCode : Bool = false
-    @State var code = ""
-    @ObservedObject var codeTextField = ObservableTextField()
-    @StateObject var vm = CountryCode()
+    //@State var code = ""
+    //@ObservedObject var codeTextField = ObservableTextField()
+    //@StateObject var vm = CountryCode()
     @State var frameSize = UIScreen.main.bounds.width
 //
    // @StateObject var vm = ShareViewModel()
@@ -47,7 +39,7 @@ struct Share: View {
             GeometryReader { geo in
                  
                 VStack{
-                    
+                    //Sheet Title
                     HStack{
                         Text("Share")
                         Text( name)
@@ -59,34 +51,44 @@ struct Share: View {
                     
                     VStack(alignment: .leading) {
                         
-                        HStack(alignment: .center){
-                            
+                        HStack{
+                            //image of the location
                             Image(uiImage:  photo)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 100, height: 60)
                                 .accessibilityLabel("\( name) Photo")
-                            
+                       
+                            //divider for design
                             Image("line")
                                 .resizable()
                                 .frame( height: 80)
                                 .scaledToFit()
                                 .accessibilityHidden(true)
                             
+                            //Location Title
+                            //house number
+                            //location Description
                             VStack(alignment: .leading){
                                 
-                                Text( name)
+                                Text(name)
                                     .modifier(HeaderTitleModifier())
                                     .padding(.bottom, 3)
-                                    .accessibilityLabel("\( name) Location")
+                                    .accessibilityLabel("\(name) Location")
                                 
-                                Text( houseNumber)
+                                Text(houseNumber)
                                     .modifier(SubTitleModifier())
-                                    .accessibilityLabel("House Number \( houseNumber)")
+                                    .accessibilityLabel("House Number \(houseNumber)")
                                 
+                                Text(linkDescription)
+                                    .modifier(SubTitleModifier())
+                                    .accessibilityLabel(linkDescription)
                                 
                             }
                             .padding(.horizontal)
+                            
+                            //IOS Share Button
+                            
                             //message: Text("\(link)"),
                             
                             //                            ShareLink(item: Image(uiImage: photo) ,message: Text("\(link)"),
@@ -99,11 +101,18 @@ struct Share: View {
                             }
                                         .foregroundColor(Color.theme.main)
                                         .accessibilityLabel("Share Link button")
+                        }//End HStack for location card
+                       
+                        //Location Link
+                        VStack(alignment: .leading){
+                            
+                            Text("Location Link:")
+                                .foregroundColor(Color.theme.main)
+                            
+                            Text( link)
+                                .modifier(SubTitleModifier())
+                                .accessibilityLabel("Location Link")
                         }
-                        
-                        Text( link)
-                            .modifier(SubTitleModifier())
-                            .accessibilityLabel("Location Link")
                     }
                     .frame(width: (frameSize - 40), height: 180)
                     .foregroundColor(Color.theme.white)
@@ -121,58 +130,80 @@ struct Share: View {
                         Text("Enter number to send location by WhatsApp:")
                             .padding(.bottom)
                         
+                        //Phone NUmber
+                        //flag + CountryCode + textfield for number
                         ZStack {
-                            RoundedRectangle(cornerRadius: 10).stroke()
-                                .frame(width: (frameSize - 40), height: 50)
-                            HStack (spacing: 0) {
-                                HStack (spacing: 0) {
-                                    Text("\(vm.flag(country: vm.getCountryCode(codeTextField.value)))")
-                                        .frame(width: 48, height: 50)
-                                    
-                                    TextField("966", text: $codeTextField.value)
-                                        .keyboardType(.phonePad)
-                                        .frame(width: 40, height: 50)
+                            HStack  {
+                                Text( countryCode.isEmpty ? "🇸🇦 966" : "\( countryFlag) +\( countryCode)")
+                                    .frame(width: 100, height: 50)
+                                    .background(Color.secondary.opacity(0.2))
+                                    .cornerRadius(10)
+                                    .foregroundColor( countryCode.isEmpty ? .secondary : .black)
+                                    .onTapGesture {
+                                        showCountryCode.toggle()
+                                        withAnimation (.spring()) {
+                                            self.y = 0
+                                        }
                                         
-                                }
-                                .background(Color.secondary.opacity(0.2))
-                                .cornerRadius(10)
+                                    }.accessibilityLabel("Country Code")
                                 
                                 TextField("Phone Number", text: $phoneNumber)
                                     .padding()
-                                    .frame(width: (frameSize - 130), height: 50)
+                                    .frame(width: 240, height: 50)
                                     .keyboardType(.phonePad)
-                                
-                            }
+                                    .onReceive(Just(phoneNumber)) { newValue in
+                                        let filtered = newValue.filter { "0123456789".contains($0) }
+                                        if filtered != newValue {
+                                            self.phoneNumber = filtered
+                                        }
+                                    }.accessibilityLabel("Phone Number")
+                            }.padding()
                             
+                            
+                            
+                            RoundedRectangle(cornerRadius: 10).stroke()
+                                .frame(width: 340, height: 50)
                         }
                         
                         
                     }
                     .padding(.top)
                     
-                    Button(action:{
-                        if !phoneNumber.isEmpty
-                        {
-                            ShareBtn()
+                    //the ZStack for the button and the calling of the menu of the flag and country code
+                    ZStack{
+                        Button(action:{
+                            if !phoneNumber.isEmpty
+                            {
+                                ShareBtn()
+                            }
+                            else {
+                                showWarning.toggle()
+                            }
+                        }
+                               ,label: {
+                           
+                            Text("Send")
+                            //.modifier(ButtonModifier())
+                                .frame(minWidth: 0, maxWidth:320)
+                                .fontWeight(.bold)
+                                .font(.system(size: 20))
+                                .padding()
+                                .background(enteredValidNumber() ? Color.theme.main : Color.gray)
+                                .cornerRadius(10)
+                                .foregroundColor(.white)
+                                .padding(10)
+                                .shadow(radius: 2, x: 0, y: 1)
+                            
+                        })
+                        .disabled(!enteredValidNumber())
+                        //.padding(.bottom, 300)
+                        .accessibilityLabel("Send")
+                        if showCountryCode {
+                            CountryCodes(countryCode: $countryCode, countryFlag: $countryFlag, y: $y)
+                            //.offset(y: y)
+                            // .position(x: geo.frame(in: .global).midX, y: geo.frame(in: .global).maxY - 150)
                         }
                     }
-                           ,label: {
-                        Text("Send")
-                        //.modifier(ButtonModifier())
-                            .frame(width: (frameSize - 40), height: 50)
-                            .fontWeight(.bold)
-                            .font(.system(size: 20))
-                            .background(enteredValidNumber() ? Color.theme.main : Color.gray)
-                            .cornerRadius(10)
-                            .foregroundColor(.white)
-                            .shadow(radius: 2, x: 0, y: 1)
-                            .padding(10)
-                        
-                    })
-                    .disabled(!enteredValidNumber())
-                    
-                    .accessibilityLabel("Send")
-                    
                         Spacer()
                         
                             .toolbar{
@@ -189,7 +220,7 @@ struct Share: View {
                 
                     .ignoresSafeArea(.container)
                     .padding(.top,15)
-                    .padding(.horizontal)
+                    
              
             }
         }//End Navigation
@@ -206,7 +237,7 @@ struct Share: View {
         let HouseNumber = "House Number"
         let phoneNumber = phoneNumber //Mobile number
         let link = link
-        let countryCode = codeTextField.value
+        let countryCode = countryCode
         //"\(link ?? "") %0A<img src="\(photo ?? "")" alt="\(Image("logo"))" width="500" height="600">"
         
 
@@ -229,10 +260,10 @@ struct Share: View {
 
     }
     
-    func shareLocationWithPhoto() -> Photo {
-        let imgToShare = Photo(image: Image(uiImage: photo), caption: link)
-        return imgToShare
-    }
+//    func shareLocationWithPhoto() -> Photo {
+//        let imgToShare = Photo(image: Image(uiImage: photo), caption: link)
+//        return imgToShare
+//    }
 }
 
 struct Share_Previews: PreviewProvider {
@@ -241,7 +272,7 @@ struct Share_Previews: PreviewProvider {
               link: "https://maps.gooogle.com",
               houseNumber: "b-16",
               photo:  UIImage( systemName:"mappin.and.ellipse" )!,
-              linkDescription: "test" ,
+              linkDescription: "test",
               isPresented: .constant(false))
         
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
