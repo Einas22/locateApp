@@ -34,9 +34,9 @@ struct AddLocationView: View {
         NavigationView{
             ZStack{
                 
-                Image("bg")
-                    .ignoresSafeArea()
-                    .accessibilityHidden(true)
+//                Image("bg")
+//                    .ignoresSafeArea()
+//                    .accessibilityHidden(true)
                 
                 
                 VStack(alignment: .leading){
@@ -161,6 +161,7 @@ struct AddLocationView: View {
                     Spacer()
                     
                 }//End VStack
+                .ignoresSafeArea(.keyboard)
                 
                 .padding(.leading, 55)
                 .padding(.trailing,55)

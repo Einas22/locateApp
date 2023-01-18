@@ -14,7 +14,7 @@ class MyLocationViewModel : ObservableObject {
     @Published var isShowingAddView = false
     @Published var isShowingShare = false
     @Published var isEditing = false
-    @Published var isPresented = false
+   // @Published var isPresented = false
     @Published var numberOfLocations : Int = 0
     @Published var savedEntity: [Item] = []
     @Published var selectedItem : Item?
@@ -69,14 +69,5 @@ class MyLocationViewModel : ObservableObject {
         
         SaveData()
     }
-//    func deleteContacts(offsets: IndexSet) {
-//        offsets.map { items[$0] }.forEach(viewContext.delete)
-//
-//        do {
-//            try viewContext.save()
-//        } catch {
-//            let nsError = error as NSError
-//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//        }
-//    }
+
 }

@@ -11,9 +11,9 @@
 		50AA46F0296F5BD600B7A8F6 /* TestAddLocation2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA46EF296F5BD600B7A8F6 /* TestAddLocation2.swift */; };
 		50AA46F3296F74AC00B7A8F6 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA46F2296F74AC00B7A8F6 /* SplashScreen.swift */; };
 		50AA46F5296F7B9800B7A8F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50AA46F4296F7B9800B7A8F6 /* LaunchScreen.storyboard */; };
-		50AA46F7296FF84C00B7A8F6 /* MyLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA46F6296FF84C00B7A8F6 /* MyLocationsViewModel.swift */; };
 		50AA46FF296FFE5600B7A8F6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50AA4701296FFE5600B7A8F6 /* Localizable.strings */; };
 		50AA47052975746A00B7A8F6 /* MyLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA47042975746A00B7A8F6 /* MyLocationViewModel.swift */; };
+		50AA47072976E6FF00B7A8F6 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA47062976E6FF00B7A8F6 /* ShareViewModel.swift */; };
 		50CF9C89296E8EA500371C6B /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF9C88296E8EA500371C6B /* Share.swift */; };
 		50CF9C8B296EA96B00371C6B /* testshare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF9C8A296EA96B00371C6B /* testshare.swift */; };
 		50CF9C8F296F123200371C6B /* TestAddLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF9C8E296F123200371C6B /* TestAddLocation.swift */; };
@@ -34,9 +34,9 @@
 		50AA46EF296F5BD600B7A8F6 /* TestAddLocation2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddLocation2.swift; sourceTree = "<group>"; };
 		50AA46F2296F74AC00B7A8F6 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		50AA46F4296F7B9800B7A8F6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		50AA46F6296FF84C00B7A8F6 /* MyLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationsViewModel.swift; sourceTree = "<group>"; };
 		50AA4700296FFE5600B7A8F6 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		50AA47042975746A00B7A8F6 /* MyLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationViewModel.swift; sourceTree = "<group>"; };
+		50AA47062976E6FF00B7A8F6 /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
 		50CF9C88296E8EA500371C6B /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		50CF9C8A296EA96B00371C6B /* testshare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testshare.swift; sourceTree = "<group>"; };
 		50CF9C8E296F123200371C6B /* TestAddLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddLocation.swift; sourceTree = "<group>"; };
@@ -67,7 +67,6 @@
 		50AA46F1296F67F000B7A8F6 /* TestView */ = {
 			isa = PBXGroup;
 			children = (
-				50AA46F6296FF84C00B7A8F6 /* MyLocationsViewModel.swift */,
 				50AA46EF296F5BD600B7A8F6 /* TestAddLocation2.swift */,
 				50CF9C8A296EA96B00371C6B /* testshare.swift */,
 				50F00B0A296D512400D71D20 /* testHome.swift */,
@@ -100,6 +99,7 @@
 				50F00B00296AA74600D71D20 /* MyLocations.swift */,
 				50AA47042975746A00B7A8F6 /* MyLocationViewModel.swift */,
 				50CF9C88296E8EA500371C6B /* Share.swift */,
+				50AA47062976E6FF00B7A8F6 /* ShareViewModel.swift */,
 				50F00B06296C183800D71D20 /* AddLocation.swift */,
 				50AA46ED296F3A3D00B7A8F6 /* CountryCodes.swift */,
 				50F00B08296C46A700D71D20 /* ImagePicker.swift */,
@@ -198,9 +198,9 @@
 			files = (
 				50F00B03296AAEE700D71D20 /* AppModifiers.swift in Sources */,
 				50F00AF5296A9D6700D71D20 /* Persistence.swift in Sources */,
-				50AA46F7296FF84C00B7A8F6 /* MyLocationsViewModel.swift in Sources */,
 				50F00B0B296D512400D71D20 /* testHome.swift in Sources */,
 				50CF9C8B296EA96B00371C6B /* testshare.swift in Sources */,
+				50AA47072976E6FF00B7A8F6 /* ShareViewModel.swift in Sources */,
 				50AA46F0296F5BD600B7A8F6 /* TestAddLocation2.swift in Sources */,
 				50AA46EE296F3A3D00B7A8F6 /* CountryCodes.swift in Sources */,
 				50F00B09296C46A700D71D20 /* ImagePicker.swift in Sources */,
@@ -279,7 +279,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -333,7 +333,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

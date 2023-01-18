@@ -73,7 +73,6 @@ struct testshare: View {
                 
                 VStack{
                     
-                    
                     Text("Share your Location")
                         .font(.headline)
                         .foregroundColor(Color.theme.main)
@@ -92,43 +91,46 @@ struct testshare: View {
                             
                         
                         
-                        
-                        HStack(alignment: .center){
-                            
-                            Image("logo")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 60, height: 60)
-                            
-                            Image("line")
-                                .resizable()
-                                .frame( height: 120)
-                                .scaledToFit()
-                            
-                            
-                            
-                            VStack(alignment: .leading){
+                        VStack(alignment: .leading) {
+                            HStack(alignment: .center){
                                 
-                                Text("Location Name")
-                                    .foregroundColor(Color.theme.black)
-                                    .padding(.bottom)
-                                Text("Location Link")
-                                    .foregroundColor(Color.theme.black)
+                                Image("logo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                                
+                                Image("line")
+                                    .resizable()
+                                    .frame( height: 100)
+                                    .scaledToFit()
+                                
+                                
+                                
+                                VStack(alignment: .leading){
+                                    
+                                    Text("Location Name")
+                                        .foregroundColor(Color.theme.black)
+                                        .padding(.bottom)
+                                    
+                                    Text("houseNumber")
+                                        .modifier(SubTitleModifier())
+                                        
+                                    
+                                }
+                                .padding()
+                                
+                                ShareLink(item: Image("logo"), preview:
+                                            SharePreview ("photo.caption", image: Image("logo"))){
+                                    Label("",systemImage:"square.and.arrow.up")
+                                }
+                                
                             }
-                            .padding()
                             
-                            ShareLink(item: Image("logo"), preview:
-                                        SharePreview ("photo.caption", image: Image("logo"))){
-                                Label("",systemImage:"square.and.arrow.up")
-                            }
-                            
+                            Text("Location Link")
+                                .foregroundColor(Color.theme.black)
                         }
                         
-                        
-                        
                     }
-                    
-                    
                     
                     VStack{
                         Text("Enter number to send location by WhatsApp:")

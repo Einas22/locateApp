@@ -10,15 +10,17 @@ import SwiftUI
 struct MyLocations: View {
     
     @StateObject var vm = MyLocationViewModel()
-
+    @State var isPresented = false
 
     var body: some View {
         
         NavigationView {
-            ZStack{
-                Image("bg")
-                    .ignoresSafeArea()
-                    .accessibilityHidden(true)
+           
+            VStack{
+//
+//                Text("My Locations")
+//                .modifier(HeaderTitleModifier())
+//                .font(.title)
                 
                 ScrollView {
                     
@@ -53,7 +55,8 @@ struct MyLocations: View {
                         }
                     
                         .foregroundColor(Color.theme.main)
-                        .navigationTitle("My Locations")
+                        .navigationBarTitle("My Locations")
+                        .fontWeight(.bold)
                         .navigationBarTitleDisplayMode(.inline)
                     
                     
@@ -65,8 +68,8 @@ struct MyLocations: View {
             
         }//End Navigation
         
-        .sheet(isPresented: $vm.isPresented, content: {
-            Share(name: vm.selectedItem?.name ?? "", link: vm.selectedItem?.link ?? "", houseNumber: vm.selectedItem?.houseNumber ?? "", photo: vm.selectedItem?.photo ?? UIImage(named: "logo")!, linkDescription: vm.selectedItem?.linkDescription ?? "")
+        .sheet(isPresented: $isPresented, content: {
+            Share(name: vm.selectedItem?.name ?? "", link: vm.selectedItem?.link ?? "", houseNumber: vm.selectedItem?.houseNumber ?? "", photo: vm.selectedItem?.photo ?? UIImage(named: "logo")!, linkDescription: vm.selectedItem?.linkDescription ?? "",isPresented: $isPresented)
         })
         .sheet(isPresented: $vm.isShowingAddView, content: {
             AddLocationView(onAdd: { LocationName, LocationLink, houseNumber, LocationDescription, image , time in
@@ -120,9 +123,11 @@ struct MyLocations: View {
                                 
                             
                                 .padding(.bottom,3)
-                            Text(entity.link ?? "None")
+                            
+                            Text(entity.linkDescription ?? "")
                                 .modifier(SubTitleModifier())
-                                .accessibilityLabel("\(entity.name ?? "None") location link")
+                                .accessibilityLabel(" \(entity.linkDescription ?? "None")")
+                            
                             Text(entity.houseNumber ?? "")
                                 .modifier(SubTitleModifier())
                                 .accessibilityLabel("House Number \(entity.houseNumber ?? " None") ")
@@ -131,7 +136,7 @@ struct MyLocations: View {
                         //.padding()
                         
                         Button {
-                            vm.isPresented.toggle()
+                            isPresented.toggle()
                             vm.selectedItem = entity
                         } label: {
                             Image(systemName: "square.and.arrow.up")
@@ -154,13 +159,10 @@ struct MyLocations: View {
                         }
                     }//HStack
                     
-                    
-                    Text(entity.linkDescription ?? "")
+                    Text(entity.link ?? "None")
                         .modifier(SubTitleModifier())
-                        .accessibilityLabel(" \(entity.linkDescription ?? "None")")
-                    
-                        
-                    
+                        .accessibilityLabel("\(entity.name ?? "None") location link")
+                   
                 }
                 
                 
@@ -177,6 +179,7 @@ struct MyLocations: View {
 
 struct MyLocations_Previews: PreviewProvider {
     static var previews: some View {
-        MyLocations().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        MyLocations()
+            //.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

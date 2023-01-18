@@ -16,10 +16,13 @@ struct test: View {
     
     var body: some View {
         NavigationStack{
-            ZStack{
-                Image("bg")
-                    .ignoresSafeArea()
-                
+//            ZStack{
+//                Image("bg")
+//                    .ignoresSafeArea()
+                Text("My Locations")
+                .modifier(HeaderTitleModifier())
+                .font(.title)
+            
                 ScrollView{
                     
                     ForEach (0..<3) { n in
@@ -74,16 +77,13 @@ struct test: View {
 
                     .padding(.leading, 45)
 
-
-                    
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
                             Button(isEditing ? "Done" : "Edit") {
                                 withAnimation { isEditing.toggle() }
                             }
                         }
-                    }
-                    .toolbar {
+                    
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button{
                                 isShowingAddView.toggle()
@@ -92,13 +92,17 @@ struct test: View {
                             }
                         }
                     }
-                    
+                    .fontWeight(.bold)
+//                    .navigationBarTitle("My Locations")
+//                    .navigationBarTitleDisplayMode(.inline)
+                    .font(.headline)
                     .foregroundColor(Color.theme.main)
-                    .navigationTitle("My Locations")
-                    .navigationBarTitleDisplayMode(.inline)
+//                    .navigationBarHidden(false)
+//                    .foregroundColor(Color.theme.main)
+                   
                     
                 }
-            }
+            //}
         }
     }
 }

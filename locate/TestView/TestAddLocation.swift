@@ -36,7 +36,7 @@ struct TestAddLocation: View {
                        Text("Add New Location")
                            .foregroundColor(Color.red)
                            .font(.system(size: 40))
-                           .fontDesign(.serif)
+                           //.fontDesign(.serif)
                            .padding()
                            .padding(.top, 30)
                        
