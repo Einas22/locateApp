@@ -71,7 +71,7 @@ func body(content: Content) -> some View {
         .padding()
         .foregroundColor(Color.theme.black)
         .background(Color.theme.white)
-        .frame(width: 320,height: 38)
+        .frame(width: (UIScreen.main.bounds.width - 60),height: 38)
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius:10)

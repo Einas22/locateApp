@@ -32,16 +32,12 @@ struct AddLocationView: View {
     var body: some View {
        
         NavigationView{
-            ZStack{
-                
-//                Image("bg")
-//                    .ignoresSafeArea()
-//                    .accessibilityHidden(true)
-                
+            
+            GeometryReader { geo in
                 
                 VStack(alignment: .leading){
                     
-                    
+                    //Location Photo
                     HStack{
                         Text("Location Photo")
                         
@@ -51,12 +47,13 @@ struct AddLocationView: View {
                                 ImagePicker(image: $image, isImageSelected: $isImageSelected)
                             }
                         
+                        //Photo Picker
                         ZStack{
                             VStack{
                                 if isImageSelected == true {
                                     Image(uiImage: image!)
                                         .resizable()
-                                        .frame(width:150, height: 100)
+                                        .frame(width:130, height: 80)
                                         .cornerRadius(10)
                                 }
                                 
@@ -71,7 +68,7 @@ struct AddLocationView: View {
                                             Image(systemName:"photo.on.rectangle")
                                                 .font(.largeTitle)
                                                 .foregroundColor(.gray)
-                                                .padding(.bottom)
+                                               // .padding(.bottom)
                                             
                                             
                                             Text("Select a Photo")
@@ -87,7 +84,7 @@ struct AddLocationView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.theme.black, lineWidth:3)
                                 .foregroundColor(Color.init(UIColor.lightGray).opacity(0.55))
-                                .frame(width:150, height: 100)
+                                .frame(width:130, height: 80)
                                 .frame(maxWidth: .infinity, alignment: .center)
                             
                             
@@ -163,8 +160,8 @@ struct AddLocationView: View {
                 }//End VStack
                 .ignoresSafeArea(.keyboard)
                 
-                .padding(.leading, 55)
-                .padding(.trailing,55)
+                .padding(.horizontal,30)
+                
                 
                 
             }
